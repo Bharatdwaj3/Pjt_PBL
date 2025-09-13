@@ -1,0 +1,53 @@
+.content-wrapper {
+  position: absolute;
+  top: 115px;
+  height: 2000px;
+  width: 100%;
+}
+.content-wrapper .main-content-section {
+  margin-top: 8rem;
+  height: 900px;
+  max-width: 1360px;
+  background-color: #fbbf24;
+}
+.content-wrapper .main-content-section .text-content {
+  width: 66.67%;
+  height: 800px;
+}
+.content-wrapper .main-content-section .text-content .text-block {
+  height: 33.33%;
+  width: 100%;
+  border-color: #6b7280 !important;
+}
+.content-wrapper .main-content-section .text-content .text-block .content-text {
+  color: #111927;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  margin-right: 500px;
+}
+.content-wrapper .main-content-section .image-section {
+  width: 33.33%;
+  height: 800px;
+}
+.content-wrapper .main-content-section .image-section .image-wrapper {
+  width: 435px;
+  background-color: #fbbf24;
+}
+.content-wrapper .main-content-section .image-section .image-wrapper .main-image {
+  top: 240px;
+  z-index: 50;
+}
+.content-wrapper .user-categories {
+  margin-top: 6rem;
+  height: 800px;
+  max-width: 1360px;
+}
+.content-wrapper .user-categories .category-card {
+  background-color: #fbbf24;
+}
+.content-wrapper .user-categories .category-card .category-description {
+  margin-top: 6rem;
+}
+.content-wrapper .user-categories .category-card .category-description ul li {
+  margin-bottom: 0.5rem;
+}/*# sourceMappingURL=content.css.map */

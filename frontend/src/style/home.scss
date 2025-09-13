@@ -1,0 +1,11 @@
+@use './variables' as *;
+
+
+.home-container{
+    position: relative;
+    min-height:300px;
+    width: 100vw;
+    background-color: $sky-light;
+    margin-top: 70px;
+}
+

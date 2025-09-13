@@ -4,7 +4,8 @@ const cors = require("cors");
 require("dotenv").config();
 
 const connectDB=require('./db');
-const gadgetRoutes =require("./routes/gadgetRoutes");
+const tenantRoutes =require("./routes/tenantRoutes");
+const pgRoutes =require("./routes/pgRoutes");
 
 const app=express();
 
@@ -20,7 +21,8 @@ app.get('/',(req,res)=>{
     res.send('Server is ready');
 });
 
-app.use('/product/gadgets',gadgetRoutes);
+app.use('/tenants',tenantRoutes);
+app.use('/pg',pgRoutes);
 
 
 const port = process.env.PORT || 3005;

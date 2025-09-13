@@ -1,0 +1,41 @@
+@use './variables' as *;
+
+
+.header-section {
+  height: 900px;
+  background: linear-gradient(to rop, $sky-light, $slate);
+
+  
+  .header-content {
+    height: 320px;
+    width: 320px;
+    position: relative;
+    
+    .title-section {
+      position: absolute;
+      top: 0;
+      height: 120px;
+      width: 320px;
+      
+      .header-title {
+        margin-top: 2.5rem;
+        margin-left: -1rem;
+        color: $purple-dark;
+      }
+    }
+
+    .description-section{
+        position: absolute;
+        bottom: 0;
+        height: 208px;
+        width: 700px;
+
+        .header-descrition{
+            margin-left:5rem;
+            font-style: italic;
+            color:$blue-dark;
+        }
+    }
+
+  }
+}

@@ -1,0 +1,31 @@
+.header-section {
+  height: 900px;
+  background: linear-gradient(to rop, #e0f2fe, #94a3b8);
+}
+.header-section .header-content {
+  height: 320px;
+  width: 320px;
+  position: relative;
+}
+.header-section .header-content .title-section {
+  position: absolute;
+  top: 0;
+  height: 120px;
+  width: 320px;
+}
+.header-section .header-content .title-section .header-title {
+  margin-top: 2.5rem;
+  margin-left: -1rem;
+  color: #581c87;
+}
+.header-section .header-content .description-section {
+  position: absolute;
+  bottom: 0;
+  height: 208px;
+  width: 700px;
+}
+.header-section .header-content .description-section .header-descrition {
+  margin-left: 5rem;
+  font-style: italic;
+  color: #1e3ab8;
+}/*# sourceMappingURL=header.css.map */

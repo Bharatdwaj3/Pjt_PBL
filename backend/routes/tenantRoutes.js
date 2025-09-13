@@ -1,5 +1,5 @@
 const express = require('express');
-const upload=require('./multer');
+const upload=require('../services/multer.js');
 const router=express.Router();
 const {getTenants, getTenant, createTenant, updateTenant, deleteTenant} = require('../controllers/tenantController.js');
 

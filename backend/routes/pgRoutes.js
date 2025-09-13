@@ -1,5 +1,5 @@
 const express = require('express');
-const upload=require('./multer');
+const upload=require('../services/multer');
 const router=express.Router();
 const {getPGs, getPG, createPG, updatePG, deletePG} = require('../controllers/pgController');
 

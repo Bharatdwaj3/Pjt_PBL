@@ -1,0 +1,71 @@
+@use './variables' as *;
+
+
+.footer-section{
+    height: 500px;
+    background: $blue-dark;
+
+    .footer-content{
+        width:1200px;
+        height: 320px;
+        position: absolute;
+        top: 80px;
+        left: 80px;
+
+        .footer-column{
+            position: relative;
+            height: 192px;
+
+            .footer-title{
+                height: 48px;
+                width: 100%;
+            }
+
+            .footer-contact{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 144px;
+
+                .social-icon{
+                    font-size: 2rem;
+                    color: white;
+                    margin-right: 0.25rem;
+                }
+                .contact-list{
+                    font-size: 1.25rem;
+                    font-weight: 300;
+                }
+            }
+            .footer-links{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 144px;
+
+                .link-list{
+                    margin-top: 3rem;
+                    font-size: 0.75rem;
+                    font-weight: 300;
+
+                    li{
+                        margin-bottom: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-border{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left:80px;
+        width:1200px;
+        height: 96px;
+        border-top: 1px solid white;
+    }
+}

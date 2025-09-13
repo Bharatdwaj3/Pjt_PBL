@@ -1,0 +1,64 @@
+@use './variables' as *;
+
+.content-wrapper{
+    position: absolute;
+    top: 115px;
+    height: 2000px;
+    width: 100%;
+
+    .main-content-section{
+        margin-top: 8rem;
+        height: 900px;
+        max-width: 1360px;
+        background-color: $amber;
+
+        .text-content{
+            width: 66.67%;
+            height: 800px;
+
+            .text-block{
+                height: 33.33%;
+                width: 100%;
+                border-color: #6b7280 !important;
+
+                .content-text{
+                    color:#111927;
+                    margin-left: 3rem;
+                    margin-top: 3rem;
+                    margin-right: 500px;
+                }
+            }
+        }
+        .image-section{
+            width:33.33%;
+            height: 800px;
+
+            .image-wrapper{
+                width:435px;
+                background-color: $amber;
+
+                .main-image{
+                    top: 240px;
+                    z-index:50;
+                }
+            }
+        }
+    }
+    .user-categories{
+        margin-top:6rem;
+        height:800px;
+        max-width:1360px;
+
+        .category-card{
+            background-color: $amber;
+
+            .category-description{
+                margin-top: 6rem;
+
+                ul li{
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+}

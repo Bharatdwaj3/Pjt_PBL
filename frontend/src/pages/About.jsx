@@ -1,11 +1,15 @@
 import React from 'react'
-
-const Header = () => {
+import {Header, Footer, Content} from '../components/index'
+const About = () => {
   return (
     <>
-        
+      <div style={{height:"2200px", width:"screen",backgroundColor:"bisque"}}>
+          <Header/>
+          <Content/>
+          <Footer/>
+        </div>
     </>
   )
 }
 
-export default Header
+export default About
