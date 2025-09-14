@@ -21,6 +21,7 @@ const tenantSchema=new mongoose.Schema({
         required:true,
         trim:true
     },
+    
     imageUrl:{
         type:String
     },

@@ -2,10 +2,11 @@
 
 
 .home-container{
-    position: relative;
-    min-height:300px;
-    width: 100vw;
-    background-color: $sky-light;
-    margin-top: 70px;
+    min-height:100vh;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap:0;
+    overflow-x: hidden;
 }
 

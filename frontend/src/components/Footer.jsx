@@ -1,11 +1,13 @@
 import React from 'react'
+import '../style/footer.scss'
+
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 const Footer = () => {
   return (
     <>
-       <div className='footer-section p-5 position-absolute bottom-0'>
+       <div className='footer-section p-5 bottom-0'>
           <div className='footer-content'>
             <div className='row h-100 g-0'>
               <div className='col-4'>
@@ -32,7 +34,7 @@ const Footer = () => {
                     <h1 className='text-white fw-bold fs-4'>About</h1>
                   </div>
                   <div className='footer-links'>
-                    <ul className='list-unstyled text-white link-list'>
+                    <ul className='list-unstyled text-white fst-italic link-list fs-6'>
                       <li>Services</li>
                       <li>Packages</li>
                       <li>Docs</li>
@@ -46,7 +48,7 @@ const Footer = () => {
                     <h1 className='text-white fw-bold fs-4'>Goals</h1>
                   </div>
                   <div className='footer-links'>
-                    <ul className='list-unstyled text-white link-list'>
+                    <ul className='list-unstyled text-white fst-italic link-list fs-6'>
                       <li>Legal</li>
                       <li>Community</li>
                       <li>Team</li>
@@ -60,7 +62,7 @@ const Footer = () => {
                     <h1 className='text-white fw-bold fs-4'>Users</h1>
                   </div>
                   <div className='footer-links'>
-                    <ul className='list-unstyled text-white link-list'>
+                    <ul className='list-unstyled text-white fst-italic link-list fs-6'>
                       <li>Developers</li>
                       <li>Freelancers</li>
                       <li>Enthusiasts</li>
