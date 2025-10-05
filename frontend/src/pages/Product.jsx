@@ -1,12 +1,14 @@
 import React from "react";
 import { Header, Footer, Content } from "../components/index";
+import PgFrontend from "../components/PgFrontend";
+import "../style/Chrcts.scss"
 const Product = () => {
   return (
     <>
-      <div style={{ height: "2200px", width: "screen", backgroundColor: "bisque" }}>
-        <Header />
-        <Content />
-        <Footer />
+      <div className="chrcts-container">
+        <Header/>
+        <PgFrontend/>
+        <Footer/>
       </div>
     </>
   );

@@ -1,74 +1,64 @@
 @use './variables' as *;
 
-.content-wrapper{
-   flex: 1;
+.content-wrapper {
+    flex: 1;
     padding: 2rem 0;
     background-color: $slate-light !important;
-   
 
-
-    .main-content-section{
-        margin-top: 8rem;
-        min-height: auto;
+    // Visual Categories Section - Replaces yellow text boxes
+    .visual-categories-section {
         max-width: 1360px;
-        background-color: $amber !important;
+        margin: 0 auto;
+        padding: 3rem 2rem;
 
-        &.p-4{
-            background-color: $amber-light !important;
-        }
+        .category-row {
+            margin-bottom: 4rem;
 
-        .text-content{
-            width: 66.67%;
-            height: 800px;
-            min-height: auto;
-
-            .text-block{
-                height: 33.33%;
-                width: 100%;
-                border-color: #6b7280 !important;
-
-                .content-text{
-                    color:#111927;
-                    margin: 1rem;
-                p{
-                    margin-bottom: 1rem;
-                }
-                }
+            img {
+                height: 300px;
+                object-fit: cover;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
-        }
-        .image-section{
-            width:33.33%;
-            min-height: auto;
 
-            .image-wrapper{
-                width: 100%;
-                max-width:435px;
-                background-color: $amber;
+            .category-content {
+                .category-title {
+                    font-size: 2.5rem;
+                }
 
-                .main-image{
-                    top: 240px;
-                    z-index:50;
+                .category-description {
+                    color: #374151;
+                    line-height: 1.8;
                 }
             }
         }
     }
-    .user-categories{
-        margin-top:3rem;
-        max-width:1360px;
+
+    // Feature Cards Section
+    .feature-categories {
+        margin-top: 3rem;
+        max-width: 1360px;
         margin-left: auto;
         margin-right: auto;
 
-        .category-card{
-             background-color: $blue-light !important;
-            height: 500px;
-            overflow: hidden;
+        .card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-             &.p-4 {
-                background-color: $blue-light !important;
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             }
 
-            .category-description{
-                margin-top: 6rem;
+            .feature-icon {
+                font-size: 3rem;
+            }
+
+            .card-title {
+                color: #111827;
+            }
+
+            .card-text {
+                color: #4b5563;
             }
         }
     }

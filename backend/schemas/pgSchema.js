@@ -12,33 +12,33 @@ const pgSchema=new mongoose.Schema({
         trim:true
     },
     type:{
-        type:Boolean,
+        type:String,
         required:true,
         trim:true
     },
     city:{
-        type:Boolean,
+        type:String,
         required:true,
         trim:true
     },
     area:{
-        type:Boolean,
+        type:String,
         required:true,
         trim:true
     },
     rooms:{
         bedrooms:{
             type:Number,
-            requird:true,
+            required:true,
             min:0
         },
         washroom:{
             type:Number,
-            requird:true,
+            required:true,
             min:0
         }
     },
-    available: {
+    avaliable: {
         type: Boolean,
         default: true
     },

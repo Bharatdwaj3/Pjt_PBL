@@ -12,8 +12,8 @@ const getPGs = async (req, res) => {
 const getPG = async (req, res) => {
   try {
     const { id } = req.params;
-    const PGitem = await PG.findById(id);
-    res.status(200).json(PGitem);
+    const PGs = await PG.findById(id);
+    res.status(200).json(PGs);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -22,13 +22,17 @@ const getPG = async (req, res) => {
 const createPG = async (req, res) => {
 
   try{
-    const PGData=req.body;
+    const PGData={...req.body,
+      rooms:{
+        bedrooms: Number(req.body.bedrooms) || 0,
+        washroom: Number(req.body.washroom) || 0
+    }};
     if(req.file){
       PGData.imageUrl=req.file.path;
       PGData.cloudinaryId=req.file.filename;
     }    
-    const PG =  await PG.create(PGData);
-    res.status(201).json(PG);
+    const pg =  await PG.create(PGData);
+    res.status(201).json(pg);
   }catch(error){
     console.error("Error creating PG: ".error);
     res.status(500).json({message: error.message});
@@ -38,7 +42,12 @@ const createPG = async (req, res) => {
 const updatePG = async (req, res) => {
   try {
     const { id } = req.params;
-    const updateData = req.body;
+    const updateData = {...req.body,
+        rooms:{
+          bedrooms: Number(req.body.bedrooms) || 0,
+          washroom: Number(req.body.washroom) || 0
+        }
+    };
 
    
 
