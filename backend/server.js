@@ -9,7 +9,7 @@ const pgRoutes =require("./routes/pgRoutes");
 
 const app=express();
 
-connectDB();
+connectDB();     // database connected
 
 app.use(cors({
     origin:'http://localhost:5173' ,
