@@ -1,26 +1,15 @@
-import './App.css'
-import {Home, About, Product} from './pages/index'
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
-import { Navigation, InsertPG } from './components'
-import InsertTenant from './components/InsertTenant'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import { Box } from '@mui/material';
+
 function App() {
-
   return (
-    <> 
-      <Router>
-        <Navigation/>
-        <Routes>
-          <Route path='/' element={<Home/> }/>  
-          <Route path='/about' element={<About/> }/>  
-          <Route path='/product' element={<Product/> }/>  
-          <Route path='/insertRooms' element={<InsertPG/> }/>  
-          <Route path='/insertTenant' element={<InsertTenant/> }/>
-
-          <Route/>  
-        </Routes>
-      </Router> 
-    </>
-  )
+    <Box >
+      <Navbar />
+      <Home />
+    </Box>
+  );
 }
 
-export default App
+export default App;
