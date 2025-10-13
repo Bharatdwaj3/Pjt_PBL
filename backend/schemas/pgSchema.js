@@ -26,6 +26,16 @@ const pgSchema=new mongoose.Schema({
         required:true,
         trim:true
     },
+     latitude: {        
+    type: Number,
+    required: true,
+    default: 30.2689
+  },
+  longitude: {       
+    type: Number,
+    required: true,
+    default: 77.9931
+  },
     rooms:{
         bedrooms:{
             type:Number,
