@@ -73,13 +73,14 @@ const LocationMap = () => {
               <Card>
                   
                   <Card.Body>
-                    <Card.Title> {selectPg?.city || "Unknown City"} </Card.Title>
+                    <Card.Title>City:  {selectPg?.city || "Unknown City"} </Card.Title>
                       <Card.Text>
-                        <strong>{selectPg?.area || "Unknown Area"}</strong><br />
-                        <strong>{selectPg?.rooms?.bedrooms ?? "N/A" }bed /{" "} {selectPg?.rooms?.washrooms ?? "N/A"} bathroom</strong>
+                        <strong>Area: {selectPg?.area || "Unknown Area"}</strong><br />
+                        <strong>BedRooms: {selectPg?.rooms?.bedrooms ?? "N/A" }bedroom {selectPg?.rooms?.washrooms ?? "N/A"} bathroom</strong>
+                        <strong>BathRooms: {selectPg?.rooms?.washrooms ?? "N/A"} bathroom</strong>
                       </Card.Text>
                       <p style={{margin:0, fontSize:"0.85rem",color:"#666"}}></p>
-                        {selectPg?.landmark || "Unknown landmark"}
+                        Landmark: {selectPg?.landmark || "Unknown landmark"}
                   </Card.Body>
                   </Card>
             </div>
