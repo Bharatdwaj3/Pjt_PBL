@@ -59,8 +59,9 @@ const LocationMap = () => {
               <div
               style={{
                 position:"absolute",
-                bottom:"20px",
-                left:"50%",
+                top:"40px",
+                 transform: "translateX(-50%)",
+                left:"90%",
                 zIndex:9999,
                 width:"300px",
               }}
@@ -68,9 +69,9 @@ const LocationMap = () => {
               <Card
                 className="shadow-lg border-0"
                 style={{
-                  borderRadius: "15px",
                   overflow:"hidden",
-                  animation:"slideUp 0.3s ease-out"
+                  animation:"slideUp 0.3s ease-out",
+                  padding:0
                 }}
               >
                 <Card.Header 
