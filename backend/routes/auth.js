@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/Users');
-
 const router = express.Router();
 
 // --- SIGNUP ROUTE ---
@@ -55,12 +54,18 @@ router.post('/login', async (req, res) => {
       { expiresIn: '5h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        // It now sends the token AND the user's role (accountType)
+        res.json({ 
+          token, 
+          user: {
+            id: user.id,
+            accountType: user.accountType 
+          } 
+        });
       }
     );
   } catch (err) {
     console.error(err.message);
-    // Corrected this line to send JSON
     res.status(500).json({ msg: 'Server Error' }); 
   }
 });
