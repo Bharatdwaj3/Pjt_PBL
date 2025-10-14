@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiUser, FiMail, FiLock, FiHome } from 'react-icons/fi'; // Removed FiEye, FiEyeOff
+import { FiUser, FiMail, FiLock, FiHome } from 'react-icons/fi';
 import '../style/Auth.css';
 
 function Signup() {
@@ -9,7 +9,6 @@ function Signup() {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  // Removed showPassword and showConfirmPassword states
 
   const navigate = useNavigate();
   const { fullName, email, accountType, password, confirmPassword } = formData;
@@ -37,6 +36,7 @@ function Signup() {
       if (!res.ok) {
         throw new Error(data.msg || 'Something went wrong');
       }
+      // This sends the success message to the login page
       navigate('/login', { state: { message: 'Registration successful! Please log in.' } });
     } catch (err) {
       setError(err.message);
@@ -54,7 +54,7 @@ function Signup() {
         {error && <p className="error-message">{error}</p>}
         
         <form onSubmit={onSubmit}>
-          {/* ...other form groups... */}
+          {/* ... all your form groups ... */}
           <div className="form-group">
             <label htmlFor="fullname">Full Name</label>
             <div className="input-group">
@@ -95,7 +95,6 @@ function Signup() {
             <div className="input-group">
               <FiLock className="input-icon" />
               <input id="password" name="password" value={password} onChange={onChange} type="password" placeholder="Create a password" required />
-              {/* Custom eye icon logic has been removed */}
             </div>
           </div>
           <div className="form-group">
@@ -103,7 +102,6 @@ function Signup() {
             <div className="input-group">
               <FiLock className="input-icon" />
               <input id="confirm-password" name="confirmPassword" value={confirmPassword} onChange={onChange} type="password" placeholder="Confirm your password" required />
-              {/* Custom eye icon logic has been removed */}
             </div>
           </div>
           <button type="submit" className="auth-button" disabled={isLoading}>
