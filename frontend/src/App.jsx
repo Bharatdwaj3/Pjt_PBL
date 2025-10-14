@@ -1,5 +1,5 @@
 import './App.css'
-import {Home, About, Product} from './pages/index'
+import {Home, Product} from './pages/index'
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 import { Navigation, InsertPG } from './components'
 import InsertTenant from './components/InsertTenant'
@@ -13,12 +13,11 @@ function App() {
         <Navigation/>
         <Routes>
           <Route path='/' element={<Home/> }/>  
-          <Route path='/about' element={<About/> }/>  
           <Route path='/product' element={<Product/> }/>  
           <Route path='/insertRooms' element={<InsertPG/> }/>  
           <Route path='/insertTenant' element={<InsertTenant/> }/>
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signUp" element={<Signup />} />
           <Route/>  
         </Routes>
       </Router> 

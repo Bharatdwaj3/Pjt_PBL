@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiUser, FiMail, FiLock, FiHome } from 'react-icons/fi';
-import '../style/Auth.css';
+import '../style/auth.css';
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ function Signup() {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:4000/api/auth/signup', {
+      const res = await fetch('http://localhost:4001/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullName, email, accountType, password }),

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FiMail, FiLock } from 'react-icons/fi';
-import '../style/Auth.css';
+import '../style/auth.css';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -34,7 +34,7 @@ const onSubmit = async e => {
   setIsLoading(true);
 
   try {
-    const res = await fetch('http://localhost:4000/api/auth/login', {
+    const res = await fetch('http://localhost:4001/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),

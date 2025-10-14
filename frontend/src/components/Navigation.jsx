@@ -17,9 +17,9 @@ const Navigation = () => {
             <Nav.Link href="/product">Product</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link eventKey={2} href="SignIn/SignOut">
-              SignIn/SignOut
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link eventKey={2} href="/signUp">
+              SignIn
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

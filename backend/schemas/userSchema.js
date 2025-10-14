@@ -25,4 +25,4 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('User_credentials', UserSchema);
+module.exports = UserSchema;

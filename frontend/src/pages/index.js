@@ -1,7 +1,7 @@
-import Home from './Home';
-import Login from './Login';
-import Signup from './Signup';
-import Product from './Product';
+import Home from './Home.jsx';
+import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+import Product from './Product.jsx';
 
 
-export {Home, About,  Login, Signup};
+export {Home, Product,  Login, Signup};
