@@ -18,7 +18,7 @@ const Navigation = () => {
           </Nav>
           <Nav>
             <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link eventKey={2} href="SignIn/SignOut">
               SignIn/SignOut
             </Nav.Link>
           </Nav>

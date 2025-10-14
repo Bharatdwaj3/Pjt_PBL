@@ -1,9 +1,10 @@
 import './App.css'
-import {Home, Product} from './pages/index'
+import {Home, About, Product} from './pages/index'
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 import { Navigation, InsertPG } from './components'
 import InsertTenant from './components/InsertTenant'
-import { Login, Profile } from './components/User/index'
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 function App() {
 
   return (
@@ -12,11 +13,12 @@ function App() {
         <Navigation/>
         <Routes>
           <Route path='/' element={<Home/> }/>  
+          <Route path='/about' element={<About/> }/>  
           <Route path='/product' element={<Product/> }/>  
           <Route path='/insertRooms' element={<InsertPG/> }/>  
           <Route path='/insertTenant' element={<InsertTenant/> }/>
-          <Route path='/profile' element={<Profile/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route/>  
         </Routes>
       </Router> 
@@ -24,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
