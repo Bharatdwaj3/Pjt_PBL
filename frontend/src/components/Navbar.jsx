@@ -1,50 +1,80 @@
-import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Navbar = () => {
-  const [user, setUser] = useState({
-    isLoggedIn: false,
-    role: "guest", 
-  });
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const navLinks = {
-    guest: ["Home", "Find PGs", "Post Property", "Contact", "Login"],
-    tenant: ["Home", "Find PGs", "Saved Rooms", "My Bookings", "Profile", "Logout"],
-    owner: ["Home", "My Listings", "Add PG", "Messages", "Profile", "Logout"],
+  const isActive = (path) => {
+    return location.pathname === path;
   };
-
-  const menuItems = user.isLoggedIn ? navLinks[user.role] : navLinks.guest;
-
-  const handleNavClick = (text) => {
-    if (text === "Login") {
-      setUser({ isLoggedIn: true, role: "tenant" }); 
-    } else if (text === "Logout") {
-      setUser({ isLoggedIn: false, role: "guest" });
-    }
-  };
-
 
   return (
-    <AppBar position="static" color="primary" sx={{ boxShadow: 2 ,m:0,p:0}}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Logo */}
-        <Typography variant="h6" sx={{ fontWeight: "bold", cursor: "pointer" }}>
-          PG Finder
-        </Typography>
-
-        {/* Menu Items */}
-        <Box sx={{ display: "flex", gap: 2 }}>
-          {menuItems.map((item) => (
+    <AppBar position="static" sx={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+      <Container maxWidth="xl">
+        <Toolbar>
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              flexGrow: 1, 
+              fontWeight: 'bold',
+              cursor: 'pointer'
+            }}
+            onClick={() => navigate('/')}
+          >
+            PG Finder
+          </Typography>
+          
+          <Box sx={{ display: 'flex', gap: 2 }}>
             <Button
-              key={item}
               color="inherit"
-              onClick={() => handleNavClick(item)}
+              startIcon={<HomeIcon />}
+              onClick={() => navigate('/')}
+              sx={{
+                backgroundColor: isActive('/') ? 'rgba(255,255,255,0.2)' : 'transparent',
+                '&:hover': {
+                  backgroundColor: 'rgba(255,255,255,0.1)'
+                }
+              }}
             >
-              {item}
+              Owner Dashboard
             </Button>
-          ))}
-        </Box>
-      </Toolbar>
+            
+            <Button
+              color="inherit"
+              startIcon={<ManageAccountsIcon />}
+              onClick={() => navigate('/manage-pgs')}
+              sx={{
+                backgroundColor: isActive('/manage-pgs') ? 'rgba(255,255,255,0.2)' : 'transparent',
+                '&:hover': {
+                  backgroundColor: 'rgba(255,255,255,0.1)'
+                }
+              }}
+            >
+              Manage PGs
+            </Button>
+            
+            <Button
+              color="inherit"
+              startIcon={<SearchIcon />}
+              onClick={() => navigate('/search-location')}
+              sx={{
+                backgroundColor: isActive('/search-location') ? 'rgba(255,255,255,0.2)' : 'transparent',
+                '&:hover': {
+                  backgroundColor: 'rgba(255,255,255,0.1)'
+                }
+              }}
+            >
+              Find PGs
+            </Button>
+          </Box>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };
