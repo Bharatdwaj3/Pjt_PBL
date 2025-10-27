@@ -1,5 +1,7 @@
-const PG = require("../models/pgModel");
-const cloudinary = require("../services/cloudinary"); 
+const { default: mongoose } = require("mongoose");
+const PG = require("../models/PGModel");
+const cloudinary = require("../services/cloudinary");
+ 
 const getPGs = async (req, res) => {
   try {
     const PGs = await PG.find({});
@@ -12,8 +14,8 @@ const getPGs = async (req, res) => {
 const getPG = async (req, res) => {
   try {
     const { id } = req.params;
-    const PGs = await PG.findById(id);
-    res.status(200).json(PGs);
+    const Subjects = await Subject.findById(id);
+    res.status(200).json(Subjects);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -22,43 +24,36 @@ const getPG = async (req, res) => {
 const createPG = async (req, res) => {
 
   try{
-    const PGData={...req.body,
-      rooms:{
-        bedrooms: Number(req.body.bedrooms) || 0,
-        washroom: Number(req.body.washroom) || 0
-    }};
+    const PGData=req.body;
     if(req.file){
       PGData.imageUrl=req.file.path;
       PGData.cloudinaryId=req.file.filename;
     }    
-    const pg =  await PG.create(PGData);
-    res.status(201).json(pg);
+    const PG =  await PG.create(PGData);
+    res.status(201).json(PG);
   }catch(error){
     console.error("Error creating PG: ".error);
     res.status(500).json({message: error.message});
   }
-
 }
 const updatePG = async (req, res) => {
   try {
     const { id } = req.params;
-    const updateData = {...req.body,
-        rooms:{
-          bedrooms: Number(req.body.bedrooms) || 0,
-          washroom: Number(req.body.washroom) || 0
-        }
-    };
-
-   
-
+    const updateData = req.body;
+    const pgData = await Subject.findByIdAndUpdate(id, updateData, {new: true});
+    if (!pgData) {
+      return res.status(404).json({ message: "Room not found" });
+    }
+    if(pgData.userId.toString()!=req.user.id.toString()&& req.user.role!=='admin'){
+      return res.status(403).json({message: "You can only update your owned rooms "})
+    }
     if(req.file){
       updateData.imageUrl=req.file.path;
       updateData.cloudinaryId=req.file.filename;
     }
-
-    const PG = await PG.findByIdAndUpdate(id, updateData, {new: true});
-
-    if (!PG) {
+    const updatedPG = await PG.findByIdAndUpdate(id, updateData, {new: true});
+    
+    if (!updatedPG) {
       return res.status(404).json({ message: "PG not found" });
     }
 
@@ -69,17 +64,19 @@ const updatePG = async (req, res) => {
   }
 };
 
+
+
 const deletePG = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const PG = await PG.findByIdAndDelete(id);
+    const deletedPG = await PG.findByIdAndDelete(id);
 
-    if (!PG) {
+    if (!deletedPG) {
       return res.status(404).json({ message: "PG not found" });
     }
 
-    if(PG.cloudinaryId){
+    if(deletedPG.cloudinaryId){
       await cloudinary.uploader.destroy(PG.cloudinaryId);
     }
 
@@ -96,4 +93,5 @@ module.exports = {
   createPG,
   updatePG,
   deletePG,
+  updatePGProfile
 };

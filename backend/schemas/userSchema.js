@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
   accountType: {
     type: String,
     required: true,
-    enum: ['user', 'owner'], 
+    enum: ['user', 'owner','admin'], 
   },
   createdAt: {
     type: Date,

@@ -1,4 +1,6 @@
-const Tenant = require("../models/tenantModel");
+const { default: mongoose } = require("mongoose");
+const Tenant = require("../models/TenantModel");
+const User = require("../models/userModel");
 const cloudinary = require("../services/cloudinary"); 
 const getTenants = async (req, res) => {
   try {
@@ -11,66 +13,78 @@ const getTenants = async (req, res) => {
 
 const getTenant = async (req, res) => {
   try {
-    const { id } = req.params;
-    const Tenantitem = await Tenant.findById(id);
-    res.status(200).json(Tenantitem);
+    const { id } = req.params;  
+    const [aggregatedTenant] = await User.aggregate([
+      { $match: { _id: new mongoose.Types.ObjectId(id), accountType: 'Tenant' } },
+      {
+        $lookup: {
+          from: 'Tenant',
+          localField: '_id',
+          foreignField: 'userId',
+          as: 'profile'
+        }
+      },
+      { $unwind: { path: '$profile', preserveNullAndEmptyArrays: true } },
+      {
+        $project: {
+          _id: 1,
+          fullName: 1,
+          email: 1,
+          accountType: 1,
+          age: '$profile.age',
+          gender: '$profile.gender',
+          dept: '$profile.dept',
+          major: '$profile.major',
+          course: '$profile.course',
+          imageUrl: '$profile.imageUrl'
+        }
+      }
+    ]);
+
+    if (!aggregatedTenant) return res.status(404).json({ message: 'Tenant not found' });
+    res.status(200).json(aggregatedTenant);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const createTenant = async (req, res) => {
 
+
+const updateTenantProfile=async(req, res)=>{
   try{
-    const TenantData=req.body;
+    const userId=req.user.id;
+    const user=await User.findById(userId);
+    if(!user) return res.status(404).json({message: 'User not found'});
+    if(user.accountType!='Tenant')
+        return res.status(400).json({message: "You don't have permissions to edit this !!"});
+    const profileData=req.body;
     if(req.file){
-      TenantData.imageUrl=req.file.path;
-      TenantData.cloudinaryId=req.file.filename;
-    }    
-    const Tenant =  await Tenant.create(TenantData);
-    res.status(201).json(Tenant);
+      profileData.imageUrl=req.file.path;
+      profileData.cloudinaryId=req.file.filename;
+    }
+    const updatedProfile=await Tenant.findOneAndUpdate(
+      {userId: userId},
+      {...profileData, userId: userId},
+      {new: true, upsert: true, setDefaultsOnInsert: true}
+    );
+    res.status(200).json(updatedProfile);
   }catch(error){
-    console.error("Error creating Tenant: ".error);
+    console.error("Profile update error: ",error);
     res.status(500).json({message: error.message});
   }
-
 }
-const updateTenant = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updateData = req.body;
-
-   
-
-    if(req.file){
-      updateData.imageUrl=req.file.path;
-      updateData.cloudinaryId=req.file.filename;
-    }
-
-    const Tenant = await Tenant.findByIdAndUpdate(id, updateData, {new: true});
-
-    if (!Tenant) {
-      return res.status(404).json({ message: "Tenant not found" });
-    }
-
-    res.status(200).json(Tenant);
-  } catch (error) {
-    console.error("Error updating Tenant: ",error);
-    res.status(500).json({ message: error.message });
-  }
-};
 
 const deleteTenant = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const Tenant = await Tenant.findByIdAndDelete(id);
+    const deletedTenant = await Tenant.findByIdAndDelete(id);
 
-    if (!Tenant) {
+    if (!deletedTenant) {
       return res.status(404).json({ message: "Tenant not found" });
     }
 
-    if(Tenant.cloudinaryId){
+    if(deletedTenant.cloudinaryId){
       await cloudinary.uploader.destroy(Tenant.cloudinaryId);
     }
 
@@ -84,7 +98,6 @@ const deleteTenant = async (req, res) => {
 module.exports = {
   getTenants,
   getTenant,
-  createTenant,
-  updateTenant,
   deleteTenant,
+  updateTenantProfile
 };
