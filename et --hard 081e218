@@ -1,0 +1,23 @@
+[33m4a24c9c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m081e218[m HEAD@{1}: commit (merge): fixed conflicts
+[33m4a24c9c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{2}: commit: added auth system
+[33m740200a[m HEAD@{3}: commit (merge): "Merged Base with Auth System"
+[33md8640c3[m HEAD@{4}: reset: moving to HEAD
+[33md8640c3[m HEAD@{5}: commit: working on merging
+[33m68111d5[m HEAD@{6}: reset: moving to HEAD
+[33m68111d5[m HEAD@{7}: reset: moving to HEAD
+[33m68111d5[m HEAD@{8}: checkout: moving from main to main
+[33m68111d5[m HEAD@{9}: commit: tempared some css
+[33mca81614[m HEAD@{10}: commit: fixed some frontend
+[33mdaabf48[m HEAD@{11}: commit: fixed some navbar issues
+[33m5a5a0ba[m HEAD@{12}: commit: added room details page
+[33m51be0a6[m HEAD@{13}: commit: making the Map Component
+[33m2dbf2b3[m HEAD@{14}: commit: added room details page
+[33m877af17[m HEAD@{15}: commit: fixed the basic pages' style
+[33mb64057b[m HEAD@{16}: commit: fixing sass
+[33m6a065be[m HEAD@{17}: commit: added cloudinary config
+[33m30c02bf[m HEAD@{18}: commit: changed gitignore
+[33m0c7989a[m HEAD@{19}: commit: Stop tracking .env
+[33m406f7bd[m HEAD@{20}: commit: Stop tracking .env
+[33m734de35[m HEAD@{21}: commit: configuring .env files
+[33mf4d889a[m HEAD@{22}: commit (initial): init

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Box, IconButton, Typography, Button } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
@@ -173,3 +174,23 @@ const Home = () => {
 };
 
 export default Home;
+=======
+import React from "react";
+import { Header, Footer, Content,Slider } from "../components/index";
+import '../style/home.scss'
+
+const Home = () => {
+  return (
+    <>
+      <div className="home-container">
+        <Slider />
+        <Header/>
+        <Content />
+        <Footer />
+      </div>
+    </>
+  );
+};
+
+export default Home;
+>>>>>>> ba8bd5e3922e82240ef14c79024b1a5216d289fb
